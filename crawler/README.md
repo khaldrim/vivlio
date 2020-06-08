@@ -2,11 +2,10 @@
 
 # Objetivo
 
-Extraer data de páginas de librerías chilenas como: www.antartica.cl, https://www.feriachilenadellibro.cl/, etc. Además, aplicar aumento de datos
+Extraer data de páginas de librerías chilenas como: https://www.antartica.cl, https://www.feriachilenadellibro.cl/, etc. Además, aplicar aumento de datos
 para obtener un corpus sobre el cual indexar.
 
-### Disclaimer: El proyecto tiene como objetivo plantear un sistema de recuperación de información sencillo, no se enviarán solicitudes constantemente
-### a los sitios mencionados para no denegar el servicio que brindan.
+##### Disclaimer: El proyecto tiene como objetivo plantear un sistema de recuperación de información sencillo, no se enviarán solicitudes constantemente a los sitios mencionados para no denegar el servicio que brindan.
 
 # Guias:
 
@@ -18,18 +17,32 @@ para obtener un corpus sobre el cual indexar.
 
 
 # Pasos para crear un ambiente virtual:
-	```shell
-		cd vivlio/crawler
-		python3 -m venv env
-		source env/bin/activate
- 	```
+```shell
+	cd vivlio/crawler
+	python3 -m venv env
+	source env/bin/activate
+```
 
- 	Nota: Para desactivar el ambiente virtual
-	```shell
-		deactivate
- 	``` 	
+Nota: Para desactivar el ambiente virtual
+```shell
+	deactivate
+``` 	
+
+# Instalar dependencias:
+
+Luego de crear el ambiente virtual:
+
+```shell
+	pip install scrapy
+```
 
 # Requisitos:
 	
 	- Python v3.8.2
+	- Scrappy v2.1.0
 
+# Uso:
+
+```shell
+	scrapy runspider <nombre_archivo>.py
+```
