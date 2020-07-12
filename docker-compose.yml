@@ -1,0 +1,29 @@
+version: '3'
+    
+services:
+  django:
+    build: ./django
+    command: python ./django/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/src
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres_db
+    links:
+      - postgres_db
+    networks:
+      - djangonetwork
+  postgres_db:
+    image: postgres
+    container_name: postgres_db
+    environment:
+      - POSTGRES_DB=vivlio-pg-db
+      - POSTGRES_USER=vivlio_usr
+      - POSTGRES_PASSWORD=vivlio
+    networks:
+      - djangonetwork
+  
+networks:
+  djangonetwork:
+    driver: bridge
