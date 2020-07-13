@@ -6,12 +6,12 @@ from django.utils.translation import ugettext_lazy as _
 # Create your models here.
 
 
-class Preferences(models.Model):
+class Genres(models.Model):
     # foreign keys
     user = models.ManyToManyField(
         'users.User',
         verbose_name=_('Usuario'),
-        null=True,
+        blank=True
     )
 
     # required fields

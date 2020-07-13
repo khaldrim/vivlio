@@ -24,3 +24,7 @@ class UserGetSerializer(serializers.ModelSerializer):
         fields = (
             'rut',
         )
+
+class UserAddgenres(serializers.Serializer):
+    list_of_genres = serializers.ListField(child=serializers.CharField())
+    rut = serializers.CharField()

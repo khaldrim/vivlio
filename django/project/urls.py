@@ -35,6 +35,8 @@ urlpatterns = [
     url(r'^admin/', include('loginas.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include('users.urls'), name='users'),
+    url(r'^api/', include('genres.urls'), name='genres'),
+    url(r'^api/', include('books.urls'), name='books'),
     url(r'^swagger(?P<format>\.json|\.yaml)$',
         schema_view.without_ui(cache_timeout=0), name='schema-json'),
     url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0),

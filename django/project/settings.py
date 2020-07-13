@@ -23,6 +23,14 @@ LOCAL_DATABASES = {
         'PORT': 5432,
     }
 }
+
+# ElasticSearch
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'elastic_search:9200'
+    },
+}
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -53,7 +61,10 @@ INSTALLED_APPS = [
     'drf_yasg',
     'utils',
     'users',
-    'preferences',
+    'genres',
+    'books',
+    'reviews'
+    
 ]
 
 MIDDLEWARE = [

@@ -22,3 +22,5 @@ class UserGetExample(serializers.ModelSerializer):
             'last_name',
             'email',
         )
+
+        

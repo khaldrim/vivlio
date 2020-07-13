@@ -32,8 +32,16 @@ Si se desea crear una nueva app, o realizar migraciones, correr el siguiente com
 sudo docker-compose run django python ./django/manage.py "MICOMANDO"
 ```
 
-## Visualizar documentación
+## Visualizar documentación de api
 La documentación se encuentra en
 ```
 http://0.0.0.0:8000/doc/
+```
+
+## Problemas posibles
+### ElasticSeach
+Max virtual memory areas vm.max_map_count 'x' likely too low, increase to at least 262144
+
+```
+sudo sysctl -w vm.max_map_count=262144
 ```

@@ -13,7 +13,7 @@ services:
     links:
       - postgres_db
     networks:
-      - djangonetwork
+      - internal_network
   postgres_db:
     image: postgres
     container_name: postgres_db
@@ -22,8 +22,19 @@ services:
       - POSTGRES_USER=vivlio_usr
       - POSTGRES_PASSWORD=vivlio
     networks:
-      - djangonetwork
-  
+      - internal_network
+  elastic_search:
+    networks:
+      - internal_network
+    build: ./elasticsearch
+    expose:
+      - "9200" 
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - /usr/share/elasticsearch/data
 networks:
-  djangonetwork:
+  internal_network:
     driver: bridge
