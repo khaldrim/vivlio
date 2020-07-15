@@ -3,13 +3,17 @@
   margin: 0;
 }
 body{
+  display:flex;
   font-family: "Roboto", sans-serif;
+  flex-direction: column;
+  justify-content: space-between;
 }
 /*Navigation*/
 .nav-container{
   background: #FFFFFF;
-  height: 116px;
-  padding-top: 55px;
+  height: 110px;
+  padding-top: 10px;
+  margin: 1rem;
 }
 .wrapper{
   max-width: 1200px;
@@ -17,9 +21,9 @@ body{
 }
 nav{
   display:flex;
-  align-items: center;
+  align-items:center;
   justify-content: space-between;
-  height: 108px;
+  height: 100px;
 }
 nav ul{
   display:flex;
@@ -27,8 +31,8 @@ nav ul{
 
 .nav-items li{
   list-style: none;
-  margin-right: 50px;
-  font-weight: 600;
+  margin-right: 40px;
+  font-weight: 550;
 }
 
 .nav-items li a{
@@ -37,11 +41,15 @@ nav ul{
   font-family: "Poppins", sans-serif;
   text-decoration: none;
 }
+.logo{
+  margin-left:10px;
+}
 
 /*search-container*/
 .search-container{
   background: #FFFFFF;
   display:flex;
+  margin: 1rem;
   align-items: center;
   height: 400px;
   padding-top: 300px;
@@ -69,9 +77,25 @@ nav ul{
   color: #838383;
 }
 
+/* body-container*/
+.body-container{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.book-container{
+  margin: 1rem;
+  background: #F1F1F1;
+  border-radius: 25px;
+  width:1000px;
+  height:500px;
+}
+
 /* Login CSS */
 .login-container {
   background: #ffffff;
+  margin: 1rem;
   display:flex;
   align-items: center;
   height: 400px;
