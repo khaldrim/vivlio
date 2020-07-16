@@ -6,16 +6,81 @@
     <link rel="stylesheet" href="styles/style.css">
   </head>
   <body>
-    <div id="app">
-      <li v-for="currency in info" class="currency">
-        {{ currency }}
-      </li>
+    <div class="nav-container">
+      <div class="wrapper">
+        <nav>
+          <div class="logo">
+            <img src="images/logo.png" alt="Logo">
+          </div>
+          <ul class="nav-items">
+            <li> <a href="#">Ingresar</a></li>
+          </ul>
+        </nav>
+      </div>
     </div>
 
-
-
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="scripts/main.js"></script>
+    <div class="body-container">
+        <div class="profile-container">
+            <h1 class="profile-title">Bienvenido a Vivlio</h1>
+            <div class="profile-form">
+              <form>
+                <div class="profile-title-input">
+                  <p>Nombre</p>
+                </div>
+                <div class="profile-input">
+                  <input type="text" placeholder="   Juan">
+                </div>
+                <div class="profile-title-input">
+                  <p>Apellido</p>
+                </div>
+                <div class="profile-input">
+                  <input type="text" placeholder="   Pérez">
+                </div>
+                <div class="profile-title-input">
+                  <p>Email</p>
+                </div>
+                <div class="profile-input">
+                  <input type="email" placeholder="   juan.perez@email.com">
+                </div>
+                <div class="profile-title-input">
+                  <p>Contraseña</p>
+                </div>
+                <div class="profile-input">
+                  <input type="password" placeholder="   ***********">
+                </div>
+                <div class="profile-genre-title">
+                  <p>Selecciona cuáles son los géneros literarios que <br>más te gustan:</p>
+                </div>
+                <div class="profile-genre-all">
+                  <div class="profile-genre-selected">
+                    <p>Drama</p>
+                  </div>
+                  <div class="profile-genre">
+                    <p>Comedia</p>
+                  </div>
+                  <div class="profile-genre">
+                    <p>Terror</p>
+                  </div>
+                  <div class="profile-genre">
+                    <p>Aventura</p>
+                  </div>
+                  <div class="profile-genre">
+                    <p>Ciencia Ficción</p>
+                  </div>
+                  <div class="profile-genre">
+                    <p>Fantasía</p>
+                  </div>
+                  <div class="profile-genre">
+                    <p>Amor</p>
+                  </div>
+                </div>
+                <div class="profile-submit">
+                  <button type="submit" >Registrarse</button>
+                </div>
+              </form>
+            </div>
+        </div>
+    </div>
   </body>
+  <script src="scripts/register.js"></script>
 </html>
