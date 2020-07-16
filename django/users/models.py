@@ -4,26 +4,32 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class User(models.Model):
-    # required fields
-    rut = models.CharField(
-        _('rut'),
-        unique=True,
-        db_index=True,
-        max_length=20,
+    # Foreign
+    tag = models.ManyToManyField(
+        'tags.Tag',
+        verbose_name=_('Preferencia'),
+        blank=True
     )
+
+    # required fields
     email = models.EmailField(
-        _('email address'),
+        _('Email'),
         unique=True,
         db_index=True,
+    )
+    password = models.CharField(
+        _('Contraseña'),
+        max_length=100,
+        blank=True,
     )
     # optional fields
     first_name = models.CharField(
-        _('first name'),
+        _('Nombre'),
         max_length=100,
         blank=True,
     )
     last_name = models.CharField(
-        _('last name'),
+        _('Apellido'),
         max_length=100,
         blank=True,
     )

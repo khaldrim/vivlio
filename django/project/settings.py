@@ -62,9 +62,10 @@ INSTALLED_APPS = [
     'drf_yasg',
     'utils',
     'users',
-    'genres',
     'books',
-    'reviews'
+    'reviews',
+    'tags',
+    'library'
     
 ]
 

@@ -8,3 +8,4 @@ drf-yasg==1.17.0
 git+https://github.com/harpb/pypugjs.git@master
 django_elasticsearch_dsl==7.1.4
 django-cors-headers==2.1.0
+Faker==4.1.1

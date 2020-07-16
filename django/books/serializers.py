@@ -4,14 +4,20 @@ from rest_framework import serializers
 # models
 from .models import Book
 
-class BookGetSerializer(serializers.ModelSerializer):
-    author = serializers.CharField(required = False)
-    genres = serializers.CharField(required = False)
-    name = serializers.CharField(required = False)
+class BookGetByNameAuthor(serializers.ModelSerializer):
+    title = serializers.CharField()
+    authors = serializers.CharField()
     class Meta:
         model = Book
         fields = (
-            'author',
-            'genres',
-            'name'
+            'title',
+            'authors'
+        )
+
+class BookGetByName(serializers.ModelSerializer):
+    title = serializers.CharField()
+    class Meta:
+        model = Book
+        fields = (
+            'title',
         )

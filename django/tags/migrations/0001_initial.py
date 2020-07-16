@@ -14,13 +14,10 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='User',
+            name='Tag',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('email', models.EmailField(db_index=True, max_length=254, unique=True, verbose_name='Email')),
-                ('password', models.CharField(blank=True, max_length=100, verbose_name='Contraseña')),
-                ('first_name', models.CharField(blank=True, max_length=100, verbose_name='Nombre')),
-                ('last_name', models.CharField(blank=True, max_length=100, verbose_name='Apellido')),
+                ('tag_name', models.CharField(max_length=50, unique=True, verbose_name='Email')),
             ],
         ),
     ]

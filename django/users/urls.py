@@ -13,16 +13,6 @@ users_urls = [
         r'^get$',
         users_views.get_user,
         name='users'
-    ),
-    url(
-        r'^get-genres$',
-        users_views.get_genres,
-        name='users'
-    ),
-    url(
-        r'^add-genres$',
-        users_views.add_genres,
-        name='users'
     )
 ]
 urlpatterns = [

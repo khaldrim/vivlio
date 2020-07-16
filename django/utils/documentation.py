@@ -4,11 +4,10 @@ from django.utils.translation import ugettext as _
 from users.serializers import UserPostSerializer
 from users.serializers import UserGetSerializer
 from users.serializers import UserAddgenres
-from books.serializers import BookGetSerializer
+#from books.serializers import BookGetSerializer
 
 # Response examples
 from users.responses import UserGetExample
-from genres.responses import genresItemGetGenresExample
 from books.responses import bookGetExampleList
 USERS = {
     'post_user': {
@@ -53,21 +52,11 @@ USERS = {
         }
     }
 }
-GENRES = {
-    'get_all_genres': {
-        'methods': ['get'],
-        'query_serializer': None,
-        'operation_id': 'List all genres',
-        'operation_summary': _('List all genres.'),
-        'responses': {
-            200: genresItemGetGenresExample,
-        }
-    }
-}
+
 BOOKS = {
     'get_book': {
         'methods': ['get'],
-        'query_serializer': BookGetSerializer,
+        #'query_serializer': BookGetSerializer,
         'operation_id': 'List books by author, by genres or by name.',
         'operation_summary': _('List books by author, by genres, or by name.'),
         'responses': {
@@ -79,7 +68,6 @@ BOOKS = {
 
 ENDPOINTS = {}
 ENDPOINTS.update(USERS)
-ENDPOINTS.update(GENRES)
 ENDPOINTS.update(BOOKS)
 
 def get_documentation(key):

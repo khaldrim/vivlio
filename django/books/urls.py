@@ -5,14 +5,14 @@ from django.conf.urls import include
 from django.conf.urls import url
 books_urls = [
     url(
-        r'^test$',
-        books_views.test,
-        name='books'
+        r'^get-library-book$',
+        books_views.get_library_book_by_name,
+        name='book'
     ),
     url(
         r'^get-book$',
         books_views.get_book,
-        name='books'
+        name='book'
     )
 ]
 urlpatterns = [
