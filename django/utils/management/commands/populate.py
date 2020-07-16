@@ -17,7 +17,6 @@ class Command(BaseCommand):
 
 
     def handle(self, *args, **options):
-        """
         print("Creando usuarios...")
         self.populate_users()
         print("Creando librerías...")
@@ -28,8 +27,9 @@ class Command(BaseCommand):
         self.populate_books()
         print("Asignando géneros a los libros...")
         self.assign_tags()
-        """
+        print("Asignando libros a librerías...")
         self.assign_library()
+        print("Base de datos poblada correctamente!")
     def random_char(self, y):
         return ''.join(random.choice(string.ascii_letters) for x in range(y))
 
