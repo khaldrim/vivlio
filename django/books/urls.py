@@ -13,6 +13,11 @@ books_urls = [
         r'^get-book$',
         books_views.get_book,
         name='book'
+    ),
+    url(
+        r'^test$',
+        books_views.test,
+        name='book'
     )
 ]
 urlpatterns = [

@@ -23,7 +23,18 @@ services:
       - POSTGRES_PASSWORD=vivlio
     networks:
       - internal_network
-  
+  elastic_search:
+    networks:
+      - internal_network
+    build: ./elasticsearch
+    expose:
+      - "9200" 
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - /usr/share/elasticsearch/data
 networks:
   internal_network:
     driver: bridge

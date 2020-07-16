@@ -81,7 +81,6 @@ def get_book(request, *args, **kwargs):
         serializer.errors,
         status=status.HTTP_400_BAD_REQUEST
     )
-"""
 @api_view(['POST'])
 def test(request, *args, **kwargs):
     conn = connections.create_connection()
@@ -89,6 +88,7 @@ def test(request, *args, **kwargs):
     return Response(
         status=status.HTTP_200_OK,
     )
+"""
 @sas(**get_documentation('get_book'))
 @sas(method='get')
 @api_view(['GET'])
