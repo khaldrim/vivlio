@@ -3,6 +3,16 @@ from rest_framework import serializers
 
 # models
 from .models import Book
+from .documents import BookDocument
+from django_elasticsearch_dsl_drf.serializers import DocumentSerializer
+
+class BookDocumentSerializer(DocumentSerializer):
+    class Meta:
+        document = BookDocument
+        fields = (
+            'id',
+            'title'
+        )
 
 class BookGetByNameAuthor(serializers.ModelSerializer):
     title = serializers.CharField()

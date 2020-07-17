@@ -104,7 +104,6 @@ class Command(BaseCommand):
     def assign_library(self):
         library_objs = Library.objects.all()
         books = Book.objects.all()
-        print(library_objs)
         for book in books:
             library_number = random.randint(1,library_objs.count())
             library_for_book = random.sample(list(library_objs), library_number)

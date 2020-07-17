@@ -3,14 +3,23 @@ version: '3'
 services:
   django:
     build: ./django
-    command: python ./django/manage.py runserver 0.0.0.0:8000
+    command: >
+      /bin/bash -c "
+        while ! curl -X GET elastic_search:9200/_cluster/health --silent;
+        do
+          sleep 1;
+        done;
+        python ./django/manage.py runserver 0.0.0.0:8000
+      "
     volumes:
       - .:/src
     ports:
       - "8000:8000"
     depends_on:
       - postgres_db
+      - elastic_search
     links:
+      - elastic_search
       - postgres_db
     networks:
       - internal_network
@@ -27,8 +36,8 @@ services:
     networks:
       - internal_network
     build: ./elasticsearch
-    expose:
-      - "9200" 
+    ports:
+      - "9200:9200" 
     ulimits:
       memlock:
         soft: -1

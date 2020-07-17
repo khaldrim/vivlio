@@ -29,3 +29,11 @@ books_urls = [
 urlpatterns = [
     url(r'^books/', include(books_urls)),
 ]
+app_name = 'books       '
+router = SimpleRouter()
+router.register(
+    prefix=r'',
+    base_name='books',
+    viewset=books_views.BookViewSet
+)
+urlpatterns = router.urls

@@ -38,6 +38,7 @@ urlpatterns = [
     url(r'^api/', include('books.urls'), name='books'),
     url(r'^api/', include('library.urls'), name='library'),
     url(r'^api/', include('tags.urls'), name='tags'),
+    url('api/books/', include('books.urls_es', namespace='books')),
     url(r'^swagger(?P<format>\.json|\.yaml)$',
         schema_view.without_ui(cache_timeout=0), name='schema-json'),
     url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0),

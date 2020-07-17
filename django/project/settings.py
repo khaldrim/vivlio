@@ -56,6 +56,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_elasticsearch_dsl_drf',
+    'django_elasticsearch_dsl',
     'corsheaders',
     'rest_framework',
     'loginas',
