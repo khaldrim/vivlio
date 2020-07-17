@@ -11,3 +11,4 @@ new Vue({
       .then(response => (this.info = response.data.genres))
       }
 })
+

@@ -19,68 +19,72 @@
       </div>
     </div>
 
-    <div class="body-container">
+    <div class="body-container" id="app">
         <div class="profile-container">
             <h1 class="profile-title">Bienvenido a Vivlio</h1>
             <div class="profile-form">
-              <form>
                 <div class="profile-title-input">
                   <p>Nombre</p>
                 </div>
                 <div class="profile-input">
-                  <input type="text" placeholder="   Juan">
+                  <input id="name" v-model="name" type="text" placeholder="   Juan">
                 </div>
                 <div class="profile-title-input">
                   <p>Apellido</p>
                 </div>
                 <div class="profile-input">
-                  <input type="text" placeholder="   Pérez">
+                  <input id="lastname" v-model="lastname" type="text" placeholder="   Pérez">
                 </div>
                 <div class="profile-title-input">
                   <p>Email</p>
                 </div>
                 <div class="profile-input">
-                  <input type="email" placeholder="   juan.perez@email.com">
+                  <input id="email" v-model="email" type="email" placeholder="   juan.perez@email.com">
                 </div>
                 <div class="profile-title-input">
                   <p>Contraseña</p>
                 </div>
                 <div class="profile-input">
-                  <input type="password" placeholder="   ***********">
+                  <input id="pwd" v-model="pwd" type="password" placeholder="   ***********">
                 </div>
                 <div class="profile-genre-title">
                   <p>Selecciona cuáles son los géneros literarios que <br>más te gustan:</p>
                 </div>
+                <!-- <p>{{isActive}}</p>
+                <p>{{theme}}</p> -->
+                {{genres}}
                 <div class="profile-genre-all">
-                  <div class="profile-genre-selected">
+                  <div v-on:click="addGenre('drama', 0)" :class="theme[0]">
                     <p>Drama</p>
                   </div>
-                  <div class="profile-genre">
+                  <div v-on:click="addGenre('comedia', 1)" :class="theme[1]">
                     <p>Comedia</p>
                   </div>
-                  <div class="profile-genre">
+                  <div v-on:click="addGenre('terror', 2)" :class="theme[2]">
                     <p>Terror</p>
                   </div>
-                  <div class="profile-genre">
+                  <div v-on:click="addGenre('aventura', 3)" :class="theme[3]">
                     <p>Aventura</p>
                   </div>
-                  <div class="profile-genre">
+                  <div v-on:click="addGenre('ciencia ficción', 4)" :class="theme[4]">
                     <p>Ciencia Ficción</p>
                   </div>
-                  <div class="profile-genre">
+                  <div v-on:click="addGenre('fantasía', 5)" :class="theme[5]">
                     <p>Fantasía</p>
                   </div>
-                  <div class="profile-genre">
+                  <div v-on:click="addGenre('amor', 6)" :class="theme[6]">
                     <p>Amor</p>
                   </div>
                 </div>
                 <div class="profile-submit">
-                  <button type="submit" >Registrarse</button>
+                  <button v-on:click="sendData()">Registrarse</button>
                 </div>
-              </form>
             </div>
         </div>
     </div>
   </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="scripts/register.js"></script>
 </html>
