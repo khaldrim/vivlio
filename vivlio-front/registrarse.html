@@ -52,29 +52,38 @@
                 </div>
                 <!-- <p>{{isActive}}</p>
                 <p>{{theme}}</p> -->
-                {{genres}}
+                <!-- {{selectedGenres}} -->
                 <div class="profile-genre-all">
-                  <div v-on:click="addGenre('drama', 0)" :class="theme[0]">
-                    <p>Drama</p>
+                  <div v-for="(genre,index) in genres">
+                    <div v-on:click="addGenre(genre, index)" v-if="!isActive[index]" class="profile-genre">
+                      <p>{{genre}}</p>
+                    </div>
+                    <div v-on:click="addGenre(genre, index)" v-else class="profile-genre-selected">
+                      <p>{{genre}}</p>
+                    </div>
                   </div>
-                  <div v-on:click="addGenre('comedia', 1)" :class="theme[1]">
+
+                  
+
+                  
+                  <!-- <div v-on:click="addGenre('Comedia', 1)" :class="theme[1]">
                     <p>Comedia</p>
                   </div>
-                  <div v-on:click="addGenre('terror', 2)" :class="theme[2]">
+                  <div v-on:click="addGenre('Terror', 2)" :class="theme[2]">
                     <p>Terror</p>
                   </div>
-                  <div v-on:click="addGenre('aventura', 3)" :class="theme[3]">
+                  <div v-on:click="addGenre('Aventura', 3)" :class="theme[3]">
                     <p>Aventura</p>
                   </div>
-                  <div v-on:click="addGenre('ciencia ficción', 4)" :class="theme[4]">
+                  <div v-on:click="addGenre('Ciencia Ficción', 4)" :class="theme[4]">
                     <p>Ciencia Ficción</p>
                   </div>
-                  <div v-on:click="addGenre('fantasía', 5)" :class="theme[5]">
+                  <div v-on:click="addGenre('Fantasía', 5)" :class="theme[5]">
                     <p>Fantasía</p>
                   </div>
-                  <div v-on:click="addGenre('amor', 6)" :class="theme[6]">
+                  <div v-on:click="addGenre('Amor', 6)" :class="theme[6]">
                     <p>Amor</p>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="profile-submit">
                   <button v-on:click="sendData()">Registrarse</button>

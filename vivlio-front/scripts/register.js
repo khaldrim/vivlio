@@ -8,7 +8,8 @@ new Vue({
         lastname: "",
         email: "",
         pwd: "",
-        genres: []
+        genres: [],
+        selectedGenres: []
       }
     },
     methods: {
@@ -23,16 +24,18 @@ new Vue({
             }
         },
         addGenre: function (name, position) {
-            if(!this.genres.includes(name)) {
-                this.genres.push(name);
+            if(!this.selectedGenres.includes(name)) {
+                this.selectedGenres.push(name);
             } else {
-                let index = this.genres.indexOf(name);
+                let index = this.selectedGenres.indexOf(name);
                 if (index !== -1) {
-                    this.genres.splice(index, 1)
+                    this.selectedGenres.splice(index, 1)
                 }
             }
 
             this.toggleClass(position);
+            console.log(this.selectedGenres);
+            console.log(this.theme);
         },
         sendData: function () {
 
@@ -42,21 +45,40 @@ new Vue({
                 "last_name": this.lastname,
                 "email": this.email,
                 "password": this.pwd,
-                "list_of_tags": this.genres
+                "list_of_tags": this.selectedGenres
             }
 
             console.log(user);
-            axios.post('http://localhost:8000/api/users/create', user)
-                .then(result => {
-                    console.log(result);
+            // axios.post('http://localhost:8000/api/users/create', user)
+            //     .then(result => {
+            //         console.log(result);
+            //     })
+            //     .catch(error => {
+            //         console.log(error);
+            //     })   
+        },
+        getGenres: function () {
+            axios.get('http://localhost:8000/api/tags/list-tags')
+                .then(res => {
+                    console.log(res);
+                    if(res.status === 200) {
+                        for (let [_, value] of Object.entries(res.data)) {
+                            this.genres.push(value["name "]);
+                            console.log(value["name "]);
+                        }
+                    }
+
+                    console.log(this.genres);
                 })
                 .catch(error => {
                     console.log(error);
-                })   
-        }
-        // register:   
+            });
+        } 
     },
-    mounted () {        
+    mounted () {  
+        this.getGenres();
+        
+
     //   axios
     //     .get('http://localhost:8000/api/library/list-library')
     //     .then(response => {
