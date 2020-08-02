@@ -21,12 +21,21 @@
         </nav>
       </div>
     </div>
-    <div class="search-container">
+
+    <div id="seeker" class="search-container">
       <div class="search-box">
-        <input type="text" placeholder="¿Qué libro estás buscando?">
+        <input type="text" v-model="search" placeholder="¿Qué libro estás buscando?">
+        <div>
+          <a v-on:click="searchBook"><button>Buscar</button></a>
+       </div>
+      <!--   <li v-for="result of results">{{result}}</li>-->
       </div>
     </div>
-    <script src="scripts/script.js"></script>
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="scripts/prueba.js"></script>
   </body>
 
 </html>
