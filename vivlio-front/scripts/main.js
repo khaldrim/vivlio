@@ -12,9 +12,14 @@ new Vue({
         params: {
           title: this.title
       }
+<<<<<<< HEAD
     })
       .then(response => {console.log(response); this.generos = response.data })
     }
 
   })
 //headers: { 'title': this.title }
+=======
+})
+
+>>>>>>> 5696e9d34e20abd4909e94a4e845b230c07cd918

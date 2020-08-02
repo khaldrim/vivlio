@@ -144,3 +144,101 @@ nav ul{
 input:focus, button:focus, textarea:focus, select:focus{
   outline: none;
 }
+
+/* Perfil */
+
+.profile-container{
+  margin: 7rem auto;
+  background: #f1f1f1;
+  border-radius: 25px;
+  width: 50%;
+  height: 100%;
+}
+
+.profile-title {
+  padding-top: 50px;
+  align-content: center;
+  text-align: center;
+  color: #1C4053;
+  font-size: 36px;
+
+}
+
+.profile-title-input {
+  padding-top: 50px;
+  padding-left: 150px;
+  text-align: start;
+  color: #1C4053;
+  font-size: 26px;
+}
+
+.profile-input {
+  padding-top: 10px;
+  padding-left: 150px;
+  text-align: left;
+
+}
+.profile-input input {
+  border: 1px solid #1C4053;
+  border-radius: 5px;
+  width: 70%;
+  height: 35px;
+}
+
+.profile-form {
+  margin: 0 auto;
+}
+
+.profile-genre-title {
+  padding-top: 50px;
+  padding-left: 150px;
+  padding-bottom: 50px;
+  text-align: left;
+  color: #1C4053;
+  font-size: 26px;
+}
+
+.profile-genre-all {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 150px;
+  width: 80%;
+}
+
+.profile-genre {
+  color: white;
+  border: 1px solid #1C4053;
+  border-radius: 30px;
+  text-align: center;
+  width: 100%;
+  background-color: #1C4053;
+  margin: 1rem 2rem;
+
+  padding: 10px 10px;
+}
+
+.profile-genre-selected {
+  color: #1C4053;
+  border: 1px solid #1C4053;
+  border-radius: 30px;
+  text-align: center;
+  width: 100%;
+  background-color: #fff;
+  margin: 1rem 2rem;
+  padding: 10px 10px;
+}
+
+.profile-submit {
+  text-align: center;
+  margin: 3rem auto;
+}
+
+.profile-submit button {
+  color: white;
+  font-size: 26px;
+  background-color: #1C4053;
+  width: 200px;
+  height: 60px;
+  border: 1px solid #1C4053;
+  border-radius: 50px;
+}
