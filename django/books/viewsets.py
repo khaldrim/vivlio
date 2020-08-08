@@ -27,7 +27,8 @@ from elasticsearch_dsl.connections import connections
 # Serializers
 from .serializers import BookGetByName
 from .serializers import BookGetByNameAuthor
-from .serializers import BookDocumentSerializer
+from .serializers import BookTitleDocumentSerializer
+from .serializers import BookSummaryDocumentSerializer
 # drf yasg
 from drf_yasg.utils import swagger_auto_schema as sas
 # Utils
@@ -105,10 +106,10 @@ def test(request, *args, **kwargs):
     )
 
 
-class BookViewSet(DocumentViewSet):
+class BookTitleViewSet(DocumentViewSet):
     #conn = connections.create_connection()
     document = BookDocument
-    serializer_class = BookDocumentSerializer
+    serializer_class = BookTitleDocumentSerializer
     ordering = ('id',)
     lookup_field = 'id'
 
@@ -141,6 +142,47 @@ class BookViewSet(DocumentViewSet):
     suggester_fields = {
         'title_suggest': {
             'field': 'title.suggest',
+            'suggesters': [
+                SUGGESTER_COMPLETION,
+            ],
+        },
+    }
+class BookSummaryViewSet(DocumentViewSet):
+    #conn = connections.create_connection()
+    document = BookDocument
+    serializer_class = BookTitleDocumentSerializer
+    ordering = ('id',)
+    lookup_field = 'id'
+
+    filter_backends = [
+        DefaultOrderingFilterBackend,
+        FilteringFilterBackend,
+        SearchFilterBackend,
+        SuggesterFilterBackend,
+    ]
+
+    search_fields = (
+        'summary',
+    )
+
+    filter_fields = {
+        'id': {
+            'field': 'id',
+            'lookups': [
+                LOOKUP_FILTER_RANGE,
+                LOOKUP_QUERY_IN,
+                LOOKUP_QUERY_GT,
+                LOOKUP_QUERY_GTE,
+                LOOKUP_QUERY_LT,
+                LOOKUP_QUERY_LTE,
+            ],
+        },
+        'summary': 'summary',
+    }
+
+    suggester_fields = {
+        'summary_suggest': {
+            'field': 'summary.suggest',
             'suggesters': [
                 SUGGESTER_COMPLETION,
             ],

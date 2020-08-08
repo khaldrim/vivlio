@@ -34,6 +34,6 @@ router = SimpleRouter()
 router.register(
     prefix=r'',
     base_name='books',
-    viewset=books_views.BookViewSet
+    viewset=books_views.BookTitleViewSet
 )
 urlpatterns = router.urls
