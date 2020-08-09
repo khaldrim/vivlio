@@ -9,7 +9,14 @@
             </router-link>
           </div>
           <ul class="nav-items">
-            <li><router-link to="/login">Ingresar</router-link></li>
+            <li>
+                <div class="search-box-xss">
+                  <input type="text" v-model="search" placeholder="¿Qué libro estás buscando?"
+                  v-on:keyup.enter="getBook(search)">
+                </div>
+            </li>
+            <li><router-link to="/login">Perfil</router-link></li>
+            <li><router-link to="/login">Recomendados</router-link></li>
          </ul>
         </nav>
       </div>
@@ -31,10 +38,12 @@
 </template>
 
 <script>
+
   import { mapState } from "vuex";
   export default{
     data(){
       return{
+        search:''
       }
     },
     computed:{

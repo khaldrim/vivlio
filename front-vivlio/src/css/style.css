@@ -27,6 +27,7 @@ nav{
 }
 nav ul{
   display:flex;
+  align-items: center;
 }
 
 .nav-items li{
@@ -37,6 +38,7 @@ nav ul{
 
 .nav-items li router-link{
   color: #1C4053;
+  list-style: none;
   font-size: 24px;
   font-family: "Poppins", sans-serif;
   text-decoration: none;
@@ -73,6 +75,37 @@ nav ul{
   padding: 1rem;
   text-align: center;
   font-size: 26px;
+  background: #F4F4F4;
+  color: #838383;
+}
+/* XSS search-container*/
+.search-container-xss{
+  background: #FFFFFF;
+  display:flex;
+  margin: 1rem;
+  align-items: center;
+  height: 48px;
+  padding-top: 1px;
+}
+.search-box-xss{
+  margin: 0 auto;
+  width: 283px;
+  height: 46px;
+  background: #F4F4F4;
+  border: 2px solid #1C4053;
+  box-sizing: border-box;
+  border-radius: 20px;
+  align-content: center;
+}
+.search-box-xss input{
+  width: 268px;
+  height: 42px;
+  border: 0;
+  outline: none;
+  border-radius: 20px;
+  padding: 1rem;
+  text-align: center;
+  font-size: 18px;
   background: #F4F4F4;
   color: #838383;
 }
