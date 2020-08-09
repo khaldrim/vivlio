@@ -1,35 +1,26 @@
 <template>
   <div class="home">
-    <div id="nav" class="nav-container">
-      <div class="wrapper">
-        <nav>
-          <div class="logo">
-            <router-link to="/">
-            <img alt="Vue logo" src="@/assets/logo.png">
-            </router-link>
-          </div>
-          <ul class="nav-items">
-            <li><router-link to="/signUp">Regístrate</router-link></li>
-            <li><router-link to="/login">Ingresar</router-link></li>
-         </ul>
-        </nav>
-      </div>
-    </div>
-
+    <Navbar />
     <Seeker/>
-
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Seeker from '@/components/Seeker.vue'
+import Navbar from '@/components/Navbar.vue'
 
 export default {
   name: 'Home',
   components: {
-    Seeker
+    Seeker,
+    Navbar
   }
 }
 
 </script>
+
+
+<style scoped>
+  
+</style>

@@ -225,7 +225,7 @@ input:focus, button:focus, textarea:focus, select:focus{
 .profile-genre-title {
   padding-top: 50px;
   padding-left: 150px;
-  padding-bottom: 50px;
+  padding-bottom: 20px;
   text-align: left;
   color: #1C4053;
   font-size: 26px;
