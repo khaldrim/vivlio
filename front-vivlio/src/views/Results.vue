@@ -39,7 +39,7 @@
 
 <script>
 
-  import { mapState } from "vuex";
+  import { mapState, mapActions } from "vuex";
   export default{
     data(){
       return{
@@ -48,6 +48,10 @@
     },
     computed:{
       ...mapState(['books'])
+
+    },
+    methods:{
+      ...mapActions(['getBook'])
     }
   }
 
