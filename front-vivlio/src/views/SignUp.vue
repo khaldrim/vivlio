@@ -1,234 +1,187 @@
 <template>
-  <div class="signUp">
-    <Navbar />
-
-    <div class="body-container">
-      <div class="profile-container">
+  <b-container>
+    <b-row>
+      <Navbar />
+    </b-row>
+    <b-row class="signup-form-title">
+      <b-col cols="12" sm="12" offset-md="3" md="6" offset-lg="3" lg="6" offset-xl="3" xl="6">
         <h1 class="profile-title">Bienvenido a Vivlio</h1>
-        <div class="profile-form">
-          <div class="profile-title-input">
-            <p>Nombre</p>
-          </div>
-          <div class="profile-input">
-            <input id="name" v-model="name" type="text" placeholder="Juan">
-          </div>
+      </b-col>
+    </b-row>
+    <b-row class="signup-form-group-input">
+      <b-col cols="12" sm="12" offset-md="3" md="6" offset-lg="3" lg="6" offset-xl="3" xl="6">
+        <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+          <!-- Email -->
+          <b-form-group class="signup-form-input" id="input-group-1" label="Email:" label-for="input-1">
+            <b-form-input
+              id="input-1"
+              v-model="form.email"
+              type="email"
+              required
+              placeholder="Ingresa tu correo"
+            ></b-form-input>
+          </b-form-group>
 
-          <div class="profile-title-input">
-            <p>Apellido</p>
-          </div>
-          <div class="profile-input">
-            <input id="lastname" v-model="lastname" type="text" placeholder="Pérez">
-          </div>
-          
-          <div class="profile-title-input">
-            <p>Email</p>
-          </div>
-          <div class="profile-input">
-            <input id="email" v-model="email" type="email" placeholder="juan.perez@email.com">
-          </div>
-          
-          
-          <div class="profile-title-input">
-            <p>Contraseña</p>
-          </div>
-          <div class="profile-input">
-            <input id="pwd" v-model="pwd" type="password" placeholder="***********">
-          </div>
-          
-          <div class="profile-genre-title">
-            <p>Indicanos tus preferencias de géneros literarios,<br/> de 1 (poco) a 100 (mucho):</p>
-          </div> 
+          <!-- Names -->
+          <b-form-group class="signup-form-input" id="input-group-2" label="Nombres:" label-for="input-2">
+            <b-form-input
+              id="input-2"
+              v-model="form.name"
+              required
+              placeholder="Ingresa tus Nombres"
+            ></b-form-input>
+          </b-form-group>
 
-          <div class="preferences">
-            <div class="preference" v-for="(genre,index) in genres" :key=index>
-              <label class="preference-label" for=index>{{genre}}: {{preferences[index]}}%</label>
-              <input class="preference-range" v-model="preferences[index]" id="index" type="range" min="1" value="10" step="1" max="100" />
+          <!-- LastName -->
+          <b-form-group class="signup-form-input" id="input-group-3" label="Apellidos:" label-for="input-3">
+            <b-form-input
+              id="input-3"
+              v-model="form.lastname"
+              required
+              placeholder="Ingresa tus Apellidos"
+            ></b-form-input>
+          </b-form-group>
+
+          <!-- Password -->
+          <b-form-group class="signup-form-input" id="input-group-4" label="Contraseña: " label-for="input-4">
+            <b-input
+              type="password"
+              id="text-password"
+              aria-describedby="password-help-block"
+              v-model="form.pwd"
+            ></b-input>
+          </b-form-group>
+
+          <b-form-group class="signup-form-input" id="input-group-5" label="Indícanos tus preferencias: " label-for="input-5">
+            <div v-for="(genre,index) in genres" :key="index">
+              <label class="preference-label" for="index">{{genre}}: {{form.preferences[index]}}%</label>
+              <b-input
+                class="form-input-range"
+                type="range"
+                min="1"
+                max="100"
+                value="10"
+                step="1"
+                v-model="form.preferences[index]"
+              ></b-input>
             </div>
-          </div>
+          </b-form-group>
 
-          <div class="profile-submit">
-            <button v-on:click="sendData()">Registrarse</button>
+          <div class="send-form">
+            <b-button type="submit" class="signup-form-input-btn" variant="primary">Registrarte</b-button>
           </div>
-
+          <div class="send-form">
+            <b-button type="reset" class="signup-form-input-btn"  variant="danger">Limpiar</b-button>
           </div>
-      </div>
-    </div>
-  </div>
+        </b-form>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
-  import Navbar from '@/components/Navbar.vue'
-  import axios from 'axios'
-  export default{
-    name: 'SignUp',
-    components: {
-      Navbar
-    },
-    data(){
-      return {
-       theme: ['profile-genre', 'profile-genre', 'profile-genre', 'profile-genre', 'profile-genre', 'profile-genre', 'profile-genre'],
-       isActive: [false, false, false, false, false, false, false],
-       name: "",
-       lastname: "",
-       email: "",
-       pwd: "",
-       genres: [],
-       preferences: [],
-       selectedGenres: []
-     }
-    },
-    methods:{
-      toggleClass: function (position) {
-            console.log(position);
-            if(!this.isActive[position]) {
-                this.isActive[position] = !this.isActive[position];
-                this.theme[position] = "profile-genre-selected";
-            } else {
-                this.theme[position] = "profile-genre";
-                this.isActive[position] = !this.isActive[position];
-            }
-        },
-        addGenre: function (name, position) {
-            if(!this.selectedGenres.includes(name)) {
-                this.selectedGenres.push(name);
-            } else {
-                let index = this.selectedGenres.indexOf(name);
-                if (index !== -1) {
-                    this.selectedGenres.splice(index, 1)
-                }
-            }
-
-            this.toggleClass(position);
-            console.log(this.selectedGenres);
-            console.log(this.theme);
-        },
-        sendData: function () {
-            let user = {
-                "rut": "1111111",
-                "first_name": this.name,
-                "last_name": this.lastname,
-                "email": this.email,
-                "password": this.pwd,
-                "preferences": this.preferences
-            }
-
-            console.log(user);
-            // axios.post('http://localhost:8000/api/users/create', user)
-            //     .then(result => {
-            //         console.log(result);
-            //     })
-            //     .catch(error => {
-            //         console.log(error);
-            //     })
-        },
-        getGenres: function () {
-            axios.get('http://0.0.0.0:8000/api/tags/list-tags')
-                .then(res => {
-                    console.log(res);
-                    if(res.status === 200) {
-                        for (let [_, value] of Object.entries(res.data)) {
-                            this.genres.push(value["name "]);
-                            this.preferences.push("50");
-                        }
-                    }
-                })
-                .catch(error => {
-                    console.log(error);
-            });
-        }
+import Navbar from "@/components/Navbar.vue";
+import axios from "axios";
+export default {
+  name: "SignUp",
+  components: {
+    Navbar,
   },
-  mounted () {
-       this.getGenres();
-  }
- }
+  data() {
+    return {
+      form: {
+        email: "",
+        name: "",
+        lastname: "",
+        pwd: "",
+        preferences: [],
+      },
+      show: true,
+      genres: []
+    };
+  },
+  methods: {
+    onSubmit() {
+      console.log("Submited.");
+      let user = {
+        first_name: this.form.name,
+        last_name: this.form.lastname,
+        email: this.form.email,
+        password: this.form.pwd,
+        preferences: this.form.preferences,
+      };
 
+      console.log(user);
+      console.log("Send to backend!");
+      // axios
+      //   .post("http://localhost:8000/api/users/create", user)
+      //   .then((result) => {
+      //     console.log(result);
+      //     console.log("Registro exitoso.");
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //   });
+    },
+    onReset() {
+      this.form.name = "";
+      this.form.lastname = "";
+      this.form.email = "";
+      this.form.pwd = "";
+
+      for (let index = 0; index < this.form.preferences.length; index++) {
+        this.form.preferences[index] = "50";
+      }
+    },
+    getGenres: function () {
+      axios
+        .get("http://0.0.0.0:8000/api/tags/list-tags")
+        .then((res) => {
+          console.log(res);
+          if (res.status === 200) {
+            for (let [_, value] of Object.entries(res.data)) {
+              this.genres.push(value["name "]);
+              this.form.preferences.push("50");
+            }
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
+  mounted() {
+    this.getGenres();
+  },
+};
 </script>
 
 <style scoped>
-  input[type=text], select {
-    width: 81%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  input[type=email], select {
-    width: 81%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
+.signup-form-title {
+  color: #1C4053;
+  margin: 50px auto;
+}
 
-  input[type=password], select {
-    width: 81%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  .preferences {
-    color: #1C4053;
-    width: 75%;
-    margin: 0 auto;
-    align-content: center;
-    font-size: 25px;
-    background-color: #f1f1f1;
-  }
+.signup-form-group-input {
+  border-radius: 25px;
+  width: 80%;
+  background-color: #f1f1f1;
+  color: #1C4053;
+  margin: 0px auto 100px auto;
+}
 
-  .preference {
-    margin: 5% 5%;
-  }
+.signup-form-input {
+  margin: 10% auto;
+  font-size: 25px;
+}
 
-  .preference-label {
-    padding-right: 40px;
-    text-align: start;
-    font-weight: 300;
-    width: 100%;
-  }
-  
-  .preference-range {
-    background-color: #f1f1f1;
-  }
+.signup-form-input-btn {
+  font-size: 25px;
+  margin: 5% auto;
+} 
 
-  input[type=range] {
-    height: 26px;
-    -webkit-appearance: none;
-    margin: 10px 0;
-    width: 100%;
-  }
-
-  input[type=range]:focus {
-    outline: none;
-  }
-
-  input[type=range]::-moz-range-track {
-    width: 100%;
-    height: 4px;
-    cursor: pointer;
-    animate: 0.2s;
-    box-shadow: 1px 1px 1px #000000;
-    background: #1C4053;
-    border-radius: 4px;
-    border: 1px solid #000000;
-  }
-  
-  input[type=range]::-moz-range-thumb {
-    box-shadow: 1px 1px 1px #1C4053;
-    border: 3px solid #1C4053;
-    height: 16px;
-    width: 16px;
-    border-radius: 16px;
-    background: #fff;
-    cursor: pointer;
-  }
-
+.send-form {
+  margin: 5% 5px;
+  text-align: center;
+}
 </style>

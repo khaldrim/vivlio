@@ -125,59 +125,6 @@ nav ul{
   height:500px;
 }
 
-/* Login CSS */
-.login-container {
-  background: #ffffff;
-  margin: 1rem;
-  display:flex;
-  align-items: center;
-  height: 400px;
-  align-content: center;
-}
-.login-input {
-  margin: auto;
-  width: 250px;
-  height: 40px;
-  background: #ffffff;
-}
-
-.login-input input {
-  margin: 5px auto;
-  width: 300px;
-  height: 40px;
-  border: 2px solid #1C4053;
-  box-sizing: border-box;
-  border-radius: 30px;
-  box-shadow: none;
-  align-content: center;
-  text-decoration: none;
-  text-indent: 1cm;
-  color: #1C4053;
-  font-weight: 600;
-  background: #F4F4F4;
-
-}
-
-.login-input button {
-  margin: 5px 85px;
-  width: 120px;
-  height: 40px;
-  border: 2px solid #1C4053;
-  box-sizing: border-box;
-  border-radius: 30px;
-  box-shadow: none;
-  align-content: center;
-  text-decoration: none;
-  color: #F4F4F4;
-  font-weight: 600;
-  background: #1C4053;
-
-}
-
-input:focus, button:focus, textarea:focus, select:focus{
-  outline: none;
-}
-
 /* Perfil */
 
 .profile-container{
