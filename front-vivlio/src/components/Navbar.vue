@@ -28,11 +28,6 @@
 
             <!-- Links for Results Page -->
             <!-- TODO: Falta controlar el estado de logeo :) -->
-             <b-nav-form v-if="this.$route.name == 'Results'">
-                <b-form-input size="sm" class="mr-sm-2" placeholder="Busca otro libro"></b-form-input>
-                <!-- TODO: Cambiar por un icono mejor! -->
-                <b-button size="sm" class="my-2 my-sm-0" type="submit">Buscar</b-button>
-            </b-nav-form>
             <b-nav-item v-if="this.$route.name == 'Results'" class="nav-item-link" to="/signUp">Regístrate</b-nav-item>
             <b-nav-item v-if="this.$route.name == 'Results'" class="nav-item-link" to="/login">Ingresar</b-nav-item>
 

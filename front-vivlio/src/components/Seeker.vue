@@ -4,28 +4,19 @@
       <input
         type="text"
         v-model="search"
-        v-on:keyup.enter="onEnter"
+        v-on:keydown.enter="onSubmit(search)"
         placeholder="¿Qué libro estás buscando?"
       />
     </div>
     <div class="search-button-div">
-      <b-button class="search-button" variant="outline-primary" @click="getBook(search)">Buscar</b-button>
+      <b-button class="search-button" variant="outline-primary" @click="onSubmit(search)">Buscar</b-button>
     </div>
   </div>
-
-  <!-- <div class="search-container">
-      <div class="search-box">
-        <input type="text" v-model="search" placeholder="¿Qué libro estás buscando?">
-        <router-link to="/results">
-        <button @click="getBook(search)">Buscar</button>
-        </router-link>
-      </div>
-  </div>-->
 </template>
 
 <script>
 import axios from "axios";
-import { mapMutations, mapActions } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   name: "Seeker",
@@ -35,9 +26,9 @@ export default {
     };
   },
   methods: {
-    //...mapMutations(['bookTitle']),
-    ...mapActions(["getBook"]),
-    onEnter() {
+    ...mapActions(["searchQuery"]),
+    onSubmit() {
+      this.searchQuery(this.search);
       this.$router.push({ path: 'results', query: { book: this.search }});
     },
   },

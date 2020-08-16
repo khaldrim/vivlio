@@ -114,7 +114,7 @@ export default {
       console.log(user);
       console.log("Send to backend!");
       // axios
-      //   .post("http://localhost:8000/api/users/create", user)
+      //   .post(process.env.VUE_APP_API_URL + "/api/users/create", user)
       //   .then((result) => {
       //     console.log(result);
       //     console.log("Registro exitoso.");
@@ -151,7 +151,6 @@ export default {
     },
   },
   mounted() {
-    console.log(process.env.VUE_APP_API_URL);
     this.getGenres();
   },
 };
