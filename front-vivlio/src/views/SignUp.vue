@@ -135,7 +135,7 @@ export default {
     },
     getGenres: function () {
       axios
-        .get("http://0.0.0.0:8000/api/tags/list-tags")
+        .get(process.env.VUE_APP_API_URL + "api/tags/list-tags")
         .then((res) => {
           console.log(res);
           if (res.status === 200) {
@@ -151,6 +151,7 @@ export default {
     },
   },
   mounted() {
+    console.log(process.env.VUE_APP_API_URL);
     this.getGenres();
   },
 };
