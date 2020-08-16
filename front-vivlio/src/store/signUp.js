@@ -13,7 +13,7 @@ export default ({
   actions: {
     getGenres: async function ({ commit }) {
       let data = []
-      await axios.get('http://192.168.99.100:8000/api/tags/list-tags')
+      await axios.get('http://0.0.0.0:8000/api/tags/list-tags')
         .then(response => (data = response.data))
       commit('genres', data)
     }

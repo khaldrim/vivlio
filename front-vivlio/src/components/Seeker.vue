@@ -38,7 +38,7 @@ export default {
     //...mapMutations(['bookTitle']),
     ...mapActions(["getBook"]),
     onEnter() {
-      console.log("Buscame el libro");
+      this.$router.push({ path: 'results', query: { book: this.search }});
     },
   },
 };
@@ -78,5 +78,8 @@ select:focus {
   color: #fff !important;
   background-color: #1C4053 !important;
   border-color: #1C4053 !important;
+  font-size: 25px;
+  width: 120px;
+  border-radius: 25px;
 }
 </style>

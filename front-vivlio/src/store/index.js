@@ -16,11 +16,13 @@ export default new Vuex.Store({
   },
   actions: {
     getBook: async function ({ commit, state }, title) {
+      console.log("GET BOOK STORE!");
       const params = '*' + title + '*'
       let data = []
-      await axios.get(`http://192.168.99.100:8000/api/books/?title__wildcard=${params}`)
+      await axios.get(`http://0.0.0.0:8000/api/books/?title__wildcard=${params}`)
         .then(response => (data = response.data)).catch(error => { console.log(error) })
-      console.log(data)
+      console.log(data);
+
       commit('books', data)
     }
   },

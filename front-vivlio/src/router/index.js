@@ -22,7 +22,8 @@ const routes = [
   {
     path: '/results',
     name: 'Results',
-    component: () => import(/* webpackChunkName: "results" */ '../views/Results.vue')
+    component: () => import(/* webpackChunkName: "results" */ '../views/Results.vue'),
+    props: route => ({ query: route.query.book })
   }
 ]
 
