@@ -17,6 +17,7 @@ class Command(BaseCommand):
 
 
     def handle(self, *args, **options):
+
         print("Creando usuarios...")
         self.populate_users()
         print("Creando librerías...")
@@ -90,7 +91,7 @@ class Command(BaseCommand):
                     summary = book['sinopsis']
                 )
             book.save()
-        
+
     def assign_tags(self):
         tags = Tag.objects.all()
         books = Book.objects.all()
@@ -112,7 +113,6 @@ class Command(BaseCommand):
                 book_library = BookLibrary(
                     book = book,
                     library = library,
-                    price = random_price 
+                    price = random_price
                 )
                 book_library.save()
-        
