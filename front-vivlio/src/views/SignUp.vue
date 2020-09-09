@@ -113,15 +113,15 @@ export default {
 
       console.log(user);
       console.log("Send to backend!");
-      // axios
-      //   .post(process.env.VUE_APP_API_URL + "/api/users/create", user)
-      //   .then((result) => {
-      //     console.log(result);
-      //     console.log("Registro exitoso.");
-      //   })
-      //   .catch((error) => {
-      //     console.log(error);
-      //   });
+      axios
+        .post(process.env.VUE_APP_API_URL + "/api/users/create", user)
+        .then((result) => {
+          console.log(result);
+          console.log("Registro exitoso.");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
     onReset() {
       this.form.name = "";

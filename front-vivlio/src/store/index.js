@@ -42,7 +42,7 @@ export default new Vuex.Store({
         .then(response => (data = response.data))
         .catch(error => { console.log(error) });
       
-        console.log(data);
+        // console.log(data);
 
       commit('books', data);
       commit('query', query);

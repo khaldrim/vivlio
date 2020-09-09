@@ -31,6 +31,11 @@
             <b-nav-item v-if="this.$route.name == 'Results'" class="nav-item-link" to="/signUp">Regístrate</b-nav-item>
             <b-nav-item v-if="this.$route.name == 'Results'" class="nav-item-link" to="/login">Ingresar</b-nav-item>
 
+            <!-- Links for Book Page -->
+            <b-nav-item v-if="this.$route.name == 'Book'" class="nav-item-link" to="/">Inicio</b-nav-item>
+            <b-nav-item v-if="this.$route.name == 'Book'" class="nav-item-link" to="/signUp">Regístrate</b-nav-item>
+
+
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>

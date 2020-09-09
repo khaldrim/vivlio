@@ -22,7 +22,7 @@ class Command(BaseCommand):
         print("Creando librerías...")
         self.populate_library()
         print("Creando géneros...")
-        self.populate_tags()
+        # self.populate_tags()
         print("Creando libros...") # 8334
         self.populate_books()
         print("Asignando géneros a los libros...")
