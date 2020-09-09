@@ -26,7 +26,7 @@ export default new Vuex.Store({
       const params = '*' + title + '*'
       let data = []
       
-      await axios.get(`http://0.0.0.0:8000/api/books/?title__wildcard=${params}`)
+      await axios.get(process.env.VUE_APP_API_URL + `/api/books/?title__wildcard=${params}`)
         .then(response => (data = response.data))
         .catch(error => { console.log(error) });
       
@@ -38,7 +38,7 @@ export default new Vuex.Store({
       const params = '*' + query + '*'
       let data = []
       
-      await axios.get(`http://0.0.0.0:8000/api/books/?title__wildcard=${params}`)
+      await axios.get(process.env.VUE_APP_API_URL + `/api/books/?title__wildcard=${params}`)
         .then(response => (data = response.data))
         .catch(error => { console.log(error) });
       
