@@ -2,6 +2,7 @@
 
 
 
+
 # Backend
 ## Iniciar
 Seguir los siguientes comandos, ubicándose en la carpeta root
@@ -57,3 +58,19 @@ Max virtual memory areas vm.max_map_count 'x' likely too low, increase to at lea
 ```
 sudo sysctl -w vm.max_map_count=262144
 ```
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+

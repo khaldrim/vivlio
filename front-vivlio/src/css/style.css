@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  background-color: #f7f7f7;
+}
+
+body{
+  display:flex;
+  font-family: "Roboto", sans-serif;
+  flex-direction: column;
+  justify-content: space-between;
+}
