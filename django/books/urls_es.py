@@ -1,41 +1,39 @@
 
-from django.conf.urls import url, include
-from rest_framework.routers import DefaultRouter
-from .es_viewsets import (
-    BookDocumentViewSet,
-    BookMoreLikeThisDocumentViewSet,
-    BookMoreLikeThisNoOptionsDocumentViewSet
-)
+# views
+from . import viewsets as books_views
+from django.conf.urls import include
+from django.conf.urls import url
 
-__all__ = ('urlpatterns',)
-
-router = DefaultRouter()
+from rest_framework.routers import SimpleRouter
 
 
-# **********************************************************
-# ************************** Books *************************
-# **********************************************************
-router.register(
-    r'books',
-    BookDocumentViewSet,
-    base_name='bookdocument'
-)
 
-router.register(
-    r'books-more-like-this',
-    BookMoreLikeThisDocumentViewSet,
-    base_name='bookdocument_more_like_this'
-)
-router.register(
-    r'books-more-like-this-no-options',
-    BookMoreLikeThisNoOptionsDocumentViewSet,
-    base_name='bookdocument_more_like_this_no_options'
-)
 
-# **********************************************************
-# ********************** URL patterns **********************
-# **********************************************************
-
-urlpatterns = [
-    url(r'^', include(router.urls)),
+books_urls = [
+    url(
+        r'^get-library-book$',
+        books_views.get_library_book_by_name,
+        name='book'
+    ),
+    url(
+        r'^get-book$',
+        books_views.get_book,
+        name='book'
+    ),
+    url(
+        r'^test$',
+        books_views.test,
+        name='book'
+    )
 ]
+urlpatterns = [
+    url(r'^books/', include(books_urls)),
+]
+app_name = 'books       '
+router = SimpleRouter()
+router.register(
+    prefix=r'',
+    base_name='books',
+    viewset=books_views.BookViewSet
+)
+urlpatterns = router.urls

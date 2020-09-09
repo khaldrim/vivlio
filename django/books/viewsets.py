@@ -27,8 +27,7 @@ from elasticsearch_dsl.connections import connections
 # Serializers
 from .serializers import BookGetByName
 from .serializers import BookGetByNameAuthor
-#from .serializers import BookTitleDocumentSerializer
-#from .serializers import BookSummaryDocumentSerializer
+from .serializers import BookDocumentSerializer
 # drf yasg
 from drf_yasg.utils import swagger_auto_schema as sas
 # Utils
@@ -105,3 +104,45 @@ def test(request, *args, **kwargs):
         status=status.HTTP_200_OK,
     )
 
+
+class BookViewSet(DocumentViewSet):
+    #conn = connections.create_connection()
+    document = BookDocument
+    serializer_class = BookDocumentSerializer
+    ordering = ('id',)
+    lookup_field = 'id'
+
+    filter_backends = [
+        DefaultOrderingFilterBackend,
+        FilteringFilterBackend,
+        SearchFilterBackend,
+        SuggesterFilterBackend,
+    ]
+
+    search_fields = (
+        'title',
+    )
+
+    filter_fields = {
+        'id': {
+            'field': 'id',
+            'lookups': [
+                LOOKUP_FILTER_RANGE,
+                LOOKUP_QUERY_IN,
+                LOOKUP_QUERY_GT,
+                LOOKUP_QUERY_GTE,
+                LOOKUP_QUERY_LT,
+                LOOKUP_QUERY_LTE,
+            ],
+        },
+        'title': 'title',
+    }
+
+    suggester_fields = {
+        'title_suggest': {
+            'field': 'title.suggest',
+            'suggesters': [
+                SUGGESTER_COMPLETION,
+            ],
+        },
+    }
