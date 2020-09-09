@@ -1,0 +1,49 @@
+version: '3'
+    
+services:
+  django:
+    build: ./django
+    command: >
+      /bin/bash -c "
+        while ! curl -X GET elastic_search:9200/_cluster/health --silent;
+        do
+          sleep 1;
+        done;
+        python ./django/manage.py runserver 0.0.0.0:8000
+      "
+    volumes:
+      - .:/src
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres_db
+      - elastic_search
+    links:
+      - elastic_search
+      - postgres_db
+    networks:
+      - internal_network
+  postgres_db:
+    image: postgres
+    container_name: postgres_db
+    environment:
+      - POSTGRES_DB=vivlio-pg-db
+      - POSTGRES_USER=vivlio_usr
+      - POSTGRES_PASSWORD=vivlio
+    networks:
+      - internal_network
+  elastic_search:
+    networks:
+      - internal_network
+    build: ./elasticsearch
+    ports:
+      - "9200:9200" 
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - /usr/share/elasticsearch/data
+networks:
+  internal_network:
+    driver: bridge

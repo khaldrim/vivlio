@@ -1,0 +1,4 @@
+network.host: 0.0.0.0
+cluster.name: "vivlio"
+http.port: 9200
+discovery.type: single-node
