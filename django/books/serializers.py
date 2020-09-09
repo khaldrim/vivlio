@@ -12,7 +12,8 @@ class BookDocumentSerializer(DocumentSerializer):
         fields = (
             'id',
             'title',
-            'summary'
+            'summary',
+            'tag'
         )
 
 class BookGetByNameAuthor(serializers.ModelSerializer):

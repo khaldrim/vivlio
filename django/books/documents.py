@@ -22,14 +22,17 @@ class BookDocument(Document):
             'suggest': fields.Completion(),
         }
     )
-    """
     summary = fields.TextField(
         attr='summary',
         fields={
             'suggest': fields.Completion(),
         }
     )
-    """
+    tag = fields.ObjectField(
+        properties={
+            'tag_name': fields.TextField()
+        }
+    )
     class Django:
         model = Book
         fields = [

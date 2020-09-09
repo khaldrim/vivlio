@@ -121,6 +121,7 @@ class BookViewSet(DocumentViewSet):
 
     search_fields = (
         'title',
+        'summary'
     )
 
     filter_fields = {
