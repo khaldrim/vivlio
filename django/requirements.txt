@@ -10,3 +10,4 @@ django_elasticsearch_dsl==7.1.4
 django-cors-headers==2.1.0
 Faker==4.1.1
 django-elasticsearch-dsl-drf
+numpy

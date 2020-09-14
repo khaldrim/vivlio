@@ -10,6 +10,7 @@ class UserPostSerializer(serializers.ModelSerializer):
     email = serializers.EmailField()
     password = serializers.CharField()
     list_of_tags = serializers.ListField(child=serializers.CharField())
+    list_of_affinities = serializers.ListField(child=serializers.IntegerField())
     class Meta:
         model = User
         fields = (
@@ -17,7 +18,8 @@ class UserPostSerializer(serializers.ModelSerializer):
             'last_name',
             'email',
             'password',
-            'list_of_tags'
+            'list_of_tags',
+            'list_of_affinities'
         )
 class UserGetSerializer(serializers.ModelSerializer):
     email = serializers.EmailField()

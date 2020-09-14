@@ -13,6 +13,11 @@ users_urls = [
         r'^get$',
         users_views.get_user,
         name='users'
+    ),
+    url(
+        r'^get-recomendations$',
+        users_views.get_recomendations,
+        name='users'
     )
 ]
 urlpatterns = [

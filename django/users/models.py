@@ -10,7 +10,11 @@ class User(models.Model):
         verbose_name=_('Preferencia'),
         blank=True
     )
-
+    tagAffinity = models.ManyToManyField(
+        'tags.TagAffinity',
+        verbose_name=_('Affinidad'),
+        blank=True
+    )
     # required fields
     email = models.EmailField(
         _('Email'),

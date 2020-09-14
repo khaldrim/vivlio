@@ -10,5 +10,20 @@ class Tag(models.Model):
         unique=True,
         max_length=50
     )
+    affinity = models.IntegerField(
+        blank = True,
+        null = True
+    )
     def __str__(self):
         return self.tag_name
+class TagAffinity(models.Model):
+    tag_name_affinity = models.CharField(
+        _('Género'),
+        max_length=50
+    )
+    affinity = models.IntegerField(
+        blank = True,
+        null = True
+    )
+    def __str__(self):
+        return self.tag_name_affinity
