@@ -1,4 +1,4 @@
-Django==1.11.7
+Django==1.11.29
 django-compressor==2.2
 django-loginas==0.3.2
 djangorestframework==3.8
