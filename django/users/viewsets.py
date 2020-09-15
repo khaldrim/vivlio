@@ -71,9 +71,7 @@ def post_user(request, *args, **kwargs):
         serializer.errors,
         status=status.HTTP_400_BAD_REQUEST
     )
-@sas(**get_documentation('get_user'))
-@sas(method='get')
-@api_view(['GET'])
+@api_view(['POST'])
 def get_user(request, *args, **kwargs):
     data = request.data
     
@@ -110,7 +108,7 @@ def get_user(request, *args, **kwargs):
         status=status.HTTP_400_BAD_REQUEST
     )
 
-@api_view(['GET'])
+@api_view(['POST'])
 def get_recomendations(request, *args, **kwargs):
     data = request.data
     serializer = UserGetSerializer(data = request.data)
